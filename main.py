@@ -1,6 +1,8 @@
 import requests
 import os
 import argparse
+from dotenv import load_dotenv
+load_dotenv()
 
 BITLY_TOKEN = os.getenv('BITLY_TOKEN')
 
