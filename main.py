@@ -2,7 +2,7 @@ import requests
 import os
 import argparse
 
-TOKEN = os.getenv('TOKEN')
+BITLY_TOKEN = os.getenv('BITLY_TOKEN')
 
 def shorten_link(token, url):
     bitly_url = 'https://api-ssl.bitly.com/v4/bitlinks'
@@ -37,11 +37,11 @@ if __name__=='__main__':
 
     if input_url.startswith('bit.ly'):
         try:
-            print('Кол-во кликов в битлинке ', input_url, ' - ', count_clicks(TOKEN, input_url))
+            print('Кол-во кликов в битлинке ', input_url, ' - ', count_clicks(BITLY_TOKEN, input_url))
         except requests.exceptions.HTTPError:
             print ('Ошибка в битлинке')
     else:
         try:
-            print('Битлинк ', shorten_link(TOKEN, input_url))
+            print('Битлинк ', shorten_link(BITLY_TOKEN, input_url))
         except requests.exceptions.HTTPError:
             print ('Ошибка в ссылке')
