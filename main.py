@@ -3,8 +3,6 @@ import os
 import argparse
 from dotenv import load_dotenv
 
-load_dotenv()
-BITLY_TOKEN = os.getenv('BITLY_TOKEN')
 
 
 def shorten_link(token, url):
@@ -53,4 +51,6 @@ def main():
 
 
 if __name__ == '__main__':
+    load_dotenv()
+    BITLY_TOKEN = os.getenv('BITLY_TOKEN')
     main()
