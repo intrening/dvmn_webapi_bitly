@@ -4,7 +4,6 @@ import argparse
 from dotenv import load_dotenv
 
 
-
 def shorten_link(token, url):
     bitly_url = 'https://api-ssl.bitly.com/v4/bitlinks'
     headers = {
@@ -34,7 +33,7 @@ def count_clicks(token, bitlink):
 
 def main():
     load_dotenv()
-    BITLY_TOKEN = os.getenv('BITLY_TOKEN')
+    bitly_token = os.getenv('BITLY_TOKEN')
     
     parser = argparse.ArgumentParser(description='Сокращение ссылок через Bitly')
     parser.add_argument('url', help='Ваша ссылка')
@@ -43,12 +42,12 @@ def main():
 
     if url.startswith('bit.ly'):
         try:
-            print('Кол-во кликов в битлинке ', url, ' - ', count_clicks(BITLY_TOKEN, url))
+            print('Кол-во кликов в битлинке ', url, ' - ', count_clicks(bitly_token, url))
         except requests.exceptions.HTTPError:
             print ('Ошибка в битлинке')
     else:
         try:
-            print('Битлинк ', shorten_link(BITLY_TOKEN, url))
+            print('Битлинк ', shorten_link(bitly_token, url))
         except requests.exceptions.HTTPError:
             print ('Ошибка в ссылке')
 
